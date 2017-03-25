@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="css/signup.css">
+	<title>非即我社区-注册</title>
+	<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="js/signup.js"></script>
+</head>
+<body>
+	<nav class="navbar">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<img src="images/logo.png.png"></div>
+			<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li class="active">
+						<a href="/">首页</a>
+					</li>
+					<li>
+						<a href="/signin.html">登录</a>
+					</li>
+					<li>
+						<a href="/signup.html">注册</a>
+					</li>
+					<li>
+						<a href="#">关于我们</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="clear"></div>
+	<div class="header text-center">
+		<h3>首先你只需要简单注册一下</h3>
+	</div>
+	<div class="signup">
+		<div class="signup-out">
+			<form class="signup-form" method="post" action="/signupForm">
+				<div class="form-group">
+					<label for="username">用户名：</label>
+					<span class="username-err"></span>
+					<input type="text" class="form-control" name="username" id="username" placeholder="请输入用户名"></div>
+				<div class="form-group">
+					<label for="password">密码：</label>
+					<span class="password-err"></span>
+					<input type="password" class="form-control" name="password" id="password" placeholder="请输入密码"></div>
+				<div class="form-group">
+					<label for="address">邮箱：</label>
+					<span class="address-err"></span>
+					<input type="address" class="form-control" name="address" id="address" placeholder="请输入邮箱"></div>
+				<div class="form-group">
+					<label>性别：</label>
+					<label class="radio-inline">
+						<input type="radio" name="sexRadio" value="man" id="sexRadio1">男性</label>
+					<label class="radio-inline">
+						<input type="radio" name="sexRadio" value="woman" id="sexRadio2">女性</label>
+					<span class="sexRadio-err"></span>
+				</div>
+			</form>
+			<button class="btn btn-default submit-bt">注册</button>
+		</div>
+	</div>
+	<div class="footer-bar"></div>
+	<div class="footer text-center">
+		<span>Write By-</span>
+		<a href="#">NotMeIsMe</a>
+	</div>
+</body>
+</html>

@@ -1,0 +1,231 @@
+* {
+	padding: 0;
+	margin: 0;
+	font-family: "Microsoft Yahei";
+	box-sizing: border-box;
+	position: relative;
+}
+a:hover {
+	text-decoration: none;
+}
+.border {
+	border: 2px solid black;
+}
+.clear {
+	clear:both;
+}
+ul {
+	list-style: none;
+}
+.icon-bar {
+	border: 1px solid black;
+}
+.navbar {
+	background-color: rgb(242,102,65);
+	font-size: 17px;
+	padding: 10px 0;
+	margin-bottom: 0px;
+	border-bottom: 1px solid rgb(207, 82, 49);
+}
+.navbar-nav {
+	margin-top: 15px;
+}
+.nav>li>a {
+	border-radius: 5px;
+	color: #fff;
+}
+.nav>li>a:hover {
+	background-color: rgb(187, 74, 44);
+}
+.left-bar {
+	background: rgba(255,255,255,0.4);
+	position: fixed;
+	font-weight: 700;
+	top: 112px;
+	left: 10px;
+	width: 8%;
+	border: 2px solid #aaa;
+	border-radius: 5px;
+}
+.left-bar>.nav>li>a:hover {
+	background: #ccc;
+}
+.left-bar>.nav>li>a {
+	color: #000;
+}
+.content {
+	background: rgba(255,255,255,0.3);
+	min-height: 1000px;
+	margin: 0 10%;
+	width: 80%;
+	border: 2px solid rgba(255,255,255,0);
+	border-radius: 5px;
+}
+.content-inner {
+	background: #fff;
+}
+.content-wrap {
+	background: url('../images/purty_wood.png') fixed;
+}
+.things {
+	display: none;
+}
+.news-search {
+	width: 50%;
+	margin: 10px auto;
+}
+.news-list {
+	display: block;
+	width: 66%;
+	margin: 0 auto;
+	margin-top: 20px;
+	border-radius: 5px;
+}
+.news-bar {
+	width: 66%;
+	border-top: 3px solid #ddd;
+	margin: 20px auto;
+}
+.news-list>a {
+	color: #000;
+}
+.news-list>a:hover {
+	border-radius: 5px;
+	text-decoration: underline;
+}
+.news-list>img {
+	max-width: 50%;
+	height: auto;
+	border-radius: 5px;
+	margin: 10px auto;
+}
+#resultText {
+	border: 1px solid #ddd;
+  	margin-top: 10px;
+  	border-radius: 3px;
+  	border-left: 10px #27ae60 solid;
+}
+#resultText>a {
+	color: #000;
+}
+.search-wrap {
+	width: 60%;
+	margin: 0 auto;
+}
+#resultText:hover {
+  border-left: 10px #D96F32 solid;
+  background: #eee;
+}
+.music-list {
+	border:1px solid #ccc;
+	text-align: left;
+}
+.music-list>img {
+	width: 10%;
+	height: auto;
+	border: 1px solid #aaa;
+}
+.music-list>span:nth-child(2) {
+	padding-left: 20px;
+	font-size: 20px;
+}
+.music-list>span:nth-child(3) {
+	padding-left: 10px;
+	padding-right: 10px;
+	font-size: 16px;
+
+}
+.music-list>span:nth-child(4) {
+	display: inline-block;
+	position: relative;
+	top: 5px;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	overflow: hidden;
+	max-width: 300px;
+}
+.music-audio {
+	padding-top: 70px;
+	float: right;
+}
+.fun-list {
+	width: 80%;
+	margin: 40px auto;
+}
+.fun-list>p:nth-child(1){
+	text-align: right;
+}
+.fun-list>p:nth-child(2){
+	text-align: left;
+	font-size: 17px;
+}
+.health-list {
+	width: 80%;
+	margin: 40px auto;
+}
+.health-list>p {
+	text-align: right;
+}
+.health-list>a {
+	color: #000;
+}
+.health-list>a>p {
+	text-align: left;
+}
+.health-list>a:hover {
+	text-decoration: underline;
+}
+.cityInfo>p {
+	text-align: right;
+}
+.weather-wrap {
+	display: none;
+}
+.weather-days>p {
+	font-size: 20px;
+}
+.weather-days>span,.weather-now>span {
+	margin-right: 20px; 
+}
+.star-wrap {
+	display: none;
+	width: 80%;
+	margin: 20px auto;
+}
+.star-wrap p {
+	text-align: left;
+	font-size: 18px;
+	margin-top: 20px;
+}
+.week-star {
+	margin: 50px auto;
+}
+.movie-h1 {
+	margin-bottom: 50px;
+}
+.movie-wrap {
+	border:1px solid #ccc;
+	text-align: left;
+}
+.movie-left {
+	font-size: 27px;
+	display: inline-block;
+	width: 50%;
+	vertical-align:top;
+}
+.movie-right {
+	display: inline-block;
+	font-size: 20px;
+}
+.footer {
+	background-color: rgb(242,102,65);
+	border: 1px solid rgb(207, 82, 49);
+}
+.footer>a {
+	display: inline-block;
+	color: #555;
+	font-size: 18px;
+}
+.footer>span {
+	font-size: 18px;
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="css/friends.css">
+	<title>非即我社区-好友空间</title>
+	<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="js/friends.js"></script>
+	<script type="text/javascript" src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body ng-app="space" ng-controller="friendsCtrl">
+	<nav class="navbar">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<img src="images/logo.png.png"></div>
+			<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li class="active">
+						<a href="/userPage.html">个人首页</a>
+					</li>
+					<li>
+						<a href="/friendsSpace.html">我的空间</a>
+					</li>
+					<li>
+						<a href="#" class="logout">注销</a>
+					</li>
+					<li>
+						<a href="#">关于我们</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="bg-div">
+		<div class="left-bar">
+			<ul class="nav nav-pills nav-stacked text-center">
+				<li>
+					<a href="#" class="following">我的关注</a>
+					<ul class="nav nav-pills nav-stacked text-center following-list list-none">
+						<li ng-repeat="following in followings">
+							<a href="#"></a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="#" class="follower">我的粉丝</a>
+					<ul class="nav nav-pills nav-stacked text-center follower-list list-none">
+						<li ng-repeat="follower in followers">
+							<a href="#"></a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="#" class="mutual">互为好友</a>
+					<ul class="nav nav-pills nav-stacked text-center mutual-list list-none">
+						<li ng-repeat="mutual in mutuals">
+							<a href="#"></a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div class="search-bar">
+			<a href="#" class="btn btn-default search-btn" ng-click="search()">搜索</a>
+			<input type="text" placeholder="搜索用户" class="form-control search-text"></div>
+		<div class="clear"></div>
+		<div class="pannel">
+			<div class="header text-center">
+				<h1>{{name}}的空间</h1>
+				<a href="#" class="follow" ng-click="makeFriends()">关注</a>
+			</div>
+			<div class="write">
+				<form>
+					<p class="text-p">在这里留下你的信息：</p>
+					<textarea name="text" cols="40" rows="5" class="form-control text"></textarea>
+					<label>
+						所有人可见：
+						<input type="radio" name="pm" value="0" id="pm1"/></label>
+					<label>
+						自己或空间主人可见：
+						<input type="radio" name="pm" value="1" id="pm2"></label>
+					<a href="#" class="btn btn-default btn-primary text-a" ng-click="sendText()">发送</a>
+				</form>
+			</div>
+			<div class="content text-center">
+				<h2>消息窗口</h2>
+				<div class="content-body" ng-repeat="message in messages">
+					<div class="messageBox">
+						<p class="time">{{message.tim}}</p>
+						<p class="auth-recip">
+							<span class="auth">{{message.au}}</span>
+							<span class="recip">{{message.rec}}{{message.p}}</span>
+						</p>
+						<p class="messagetxt">{{message.mess}}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

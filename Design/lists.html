@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="css/news.css">
+	<link rel="stylesheet" type="text/css" href="css/animate.css">
+	<title>非即我社区-功能区</title>
+	<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="js/news.js"></script>
+	<script type="text/javascript" src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body>
+	<nav class="navbar">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<img src="images/logo.png.png"></div>
+			<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li class="active">
+						<a href="/userPage.html">个人首页</a>
+					</li>
+					<li>
+						<a href="/friendsSpace.html">好友空间</a>
+					</li>
+					<li>
+						<a href="#" class="logout">注销</a>
+					</li>
+					<li>
+						<a href="#">关于我们</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="content-wrap">
+		<div class="left-bar">
+			<ul class="nav nav-pills nav-stacked text-center">
+				<li>
+					<a href="#" class="news">实时新闻</a>
+				</li>
+				<li>
+					<a href="#" class="music">音乐之美</a>
+				</li>
+				<li>
+					<a href="#" class="fun">开心时刻</a>
+				</li>
+				<li>
+					<a href="#" class="health">健康知识</a>
+				</li>
+				<li>
+					<a href="#" class="wiki">维基快搜</a>
+				</li>
+				<li>
+					<a href="#" class="weather">实时天气</a>
+				</li>
+				<li>
+					<a href="#" class="star">星座运势</a>
+				</li>
+				<li>
+					<a href="#" class="movie">票房排行</a>
+				</li>
+			</ul>
+		</div>
+		<div class="clear"></div>
+		<div class="content" ng-app="myApp">
+			<div class="news-content things">
+				<div ng-controller="newsCtrl" class="text-center">
+					<div class="form-group">
+						<h1>{{name}}</h1>
+						<input type="text" placeholder="请输入新闻类型" class="form-control news-search" ng-model="text">
+						<input type="button" class="btn btn-warning" value="搜索新闻" ng-click="search()"></div>
+					<div class="animated bounceInUp newsRes" ng-repeat="newsResult in newsResults">
+						<div class="news-list">
+							<img src="{{newsResult.image}}">
+							<a ng-href="{{newsResult.page}}" target="_blank">
+								<h4>{{newsResult.title}}</h4>
+								<p>{{newsResult.body}}</p>
+							</a>
+						</div>
+						<div class="news-bar"></div>
+					</div>
+				</div>
+			</div>
+			<div class="music-content things">
+				<div ng-controller="musicCtrl" class="text-center">
+					<div class="form-group">
+						<h1>{{name}}</h1>
+						<input type="text" placeholder="请输入歌名或者人名" class="form-control news-search" ng-model="text">
+						<input type="button" class="btn btn-warning" value="搜索歌曲" ng-click="search()"></div>
+					<div class="animated bounceInUp" ng-repeat="musicResult in musicResults">
+						<div class="music-list">
+							<img src="{{musicResult.albumpic}}">
+							<span>{{musicResult.songname}}</span>
+							<span>歌手：{{musicResult.singername}}</span>
+							<span>专辑：{{musicResult.albumname}}</span>
+							<audio controls ng-src="{{musicResult.m4a}}" class="music-audio"></audio>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="fun-content things">
+				<div ng-controller="funCtrl" class="text-center">
+					<div class="form-group">
+						<h1>{{name}}</h1>
+						<input type="text" class="form-control  news-search" ng-model="text" placeholder="请输入页数">
+						<input type="button" class="btn btn-warning" value="跳转页数" ng-click="search()"></div>
+					<div class="animated bounceInUp" ng-repeat="funResult in funResults">
+						<div class="fun-list">
+							<p>{{funResult.ct}}</p>
+							<p>{{funResult.text}}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="health-content things">
+				<div ng-controller="healthCtrl" class="text-center">
+					<div class="form-group">
+						<h1>{{name}}</h1>
+						<input type="text" class="form-control  news-search" ng-model="text" placeholder="输入关键词">
+						<input type="button" class="btn btn-warning" value="搜索关键词" ng-click="search()"></div>
+					<div class="animated bounceInUp" ng-repeat="healthResult in healthResults">
+						<div class="health-list">
+							<p>{{healthResult.ct}}</p>
+							<a ng-href="{{healthResult.url}}" target="_blank">
+								<h4>{{healthResult.title}}</h4>
+								<p>{{healthResult.intro}}</p>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="wiki-content things">
+				<div ng-controller="wikiCtrl">
+					<div class="text-center">
+						<h1>{{name}}</h1>
+						<div class="form-group">
+							<input type="text" class="form-control news-search" ng-model="text" placeholder="请输入关键词" />
+						</div>
+						<input type="button" class="btn btn-warning" value="搜索关键词" ng-click="search()"/>
+						<input type="button" class="btn btn-warning" value="清除列表项" ng-click="reset()"/>
+					</div>
+					<div class="animated bounceInUp" ng-repeat="wikiResult in wikiResults" id="resultText">
+						<a ng-href="{{wikiResult.page}}" target="_blank">
+							<h4>{{wikiResult.title}}</h4>
+							<p>{{wikiResult.body}}</p>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="weather-content things">
+				<div ng-controller="weatherCtrl" class="text-center">
+					<div class="form-group">
+						<h1>{{name}}</h1>
+						<input type="text" class="form-control  news-search" ng-model="text" placeholder="按地名搜索">
+						<input type="button" class="btn btn-warning" value="搜索地名" ng-click="search()"></div>
+					<div class="weather-wrap animated bounceInUp">
+						<div class="cityInfo">
+							<p>
+								地区：{{weatherResults.cityInfo.c9}}-{{weatherResults.cityInfo.c7}}-{{weatherResults.cityInfo.c5}}
+							</p>
+							<p>
+								经纬度：{{weatherResults.cityInfo.latitude}},{{weatherResults.cityInfo.longitude}}
+							</p>
+						</div>
+						<div class="weather-now">
+							<h3>实时天气 时间：{{weatherResults.now.temperature_time}}</h3>
+							<img src="{{weatherResults.now.weather_pic}}">
+							<span>湿度：{{weatherResults.now.sd}}</span>
+							<span>温度：{{weatherResults.now.temperature}} ℃</span>
+							<span>
+								风向级数：{{weatherResults.now.wind_direction}}{{weatherResults.now.wind_power}}
+							</span>
+						</div>
+						<div class="weather-days">
+							<h3>近三天地区天气预报</h3>
+							<p>今天</p>
+							<img src="{{weatherResults.f1.day_weather_pic}}">
+							<span>
+								温度：{{weatherResults.f1.night_air_temperature}}℃-{{weatherResults.f1.day_air_temperature}}℃
+							</span>
+							<span>
+								风向级数：{{weatherResults.f1.day_wind_direction}}{{weatherResults.f1.day_wind_power}}
+							</span>
+							<span>天气：{{weatherResults.f1.day_weather}}</span>
+							<span>空气质量：{{weatherResults.f1.air_press}}</span>
+							<p>明天</p>
+							<img src="{{weatherResults.f2.day_weather_pic}}">
+							<span>
+								温度：{{weatherResults.f2.night_air_temperature}}℃-{{weatherResults.f2.day_air_temperature}}℃
+							</span>
+							<span>
+								风向级数：{{weatherResults.f2.day_wind_direction}}{{weatherResults.f2.day_wind_power}}
+							</span>
+							<span>天气：{{weatherResults.f2.day_weather}}</span>
+							<span>空气质量：{{weatherResults.f2.air_press}}</span>
+							<p>后天</p>
+							<img src="{{weatherResults.f1.day_weather_pic}}">
+							<span>
+								温度：{{weatherResults.f3.night_air_temperature}}℃-{{weatherResults.f3.day_air_temperature}}℃
+							</span>
+							<span>
+								风向级数：{{weatherResults.f3.day_wind_direction}}{{weatherResults.f3.day_wind_power}}
+							</span>
+							<span>天气：{{weatherResults.f3.day_weather}}</span>
+							<span>空气质量：{{weatherResults.f3.air_press}}</span>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="star-content things">
+				<div ng-controller="starCtrl" class="text-center">
+					<div class="form-group">
+						<h1>{{name}}</h1>
+						<input type="text" class="form-control  news-search" ng-model="text" placeholder="请输入星座名">
+						<input type="button" class="btn btn-warning" value="搜索星座" ng-click="search()"></div>
+					<div class="star-wrap animated bounceInUp">
+						<div class="now-star">
+							<h2>今日运势</h2>
+							<p>
+								幸运颜色：{{starResults.day.lucky_color}}
+								<br>
+								幸运方位：{{starResults.day.lucky_direction}}
+								<br>幸运数字：{{starResults.day.lucky_num}}</p>
+							<p>爱情运势：{{starResults.day.love_txt}}</p>
+							<p>金钱运势：{{starResults.day.money_txt}}</p>
+							<p>工作运势：{{starResults.day.work_txt}}</p>
+							<p>运势总结：{{starResults.day.general_txt}}</p>
+							<p>{{starResults.day.day_notice}}</p>
+						</div>
+						<div class="week-star">
+							<h2>今周运势</h2>
+							<p>
+								幸运颜色：{{starResults.week.lucky_color}}
+								<br>
+								幸运方位：{{starResults.week.lucky_direction}}
+								<br>
+								幸运数字：{{starResults.week.lucky_num}}
+								<br>幸运星期；{{starResults.week.lucky_day}}</p>
+							<p>爱情运势：{{starResults.week.love_txt}}</p>
+							<p>金钱运势：{{starResults.week.money_txt}}</p>
+							<p>健康运势：{{starResults.week.health_txt}}</p>
+							<p>工作运势：{{starResults.week.work_txt}}</p>
+							<p>运势总结：{{starResults.week.general_txt}}</p>
+							<p>{{starResults.week.week_notice}}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="movie-content things">
+				<div ng-controller="movieCtrl" class="text-center">
+					<h1 class="movie-h1">{{name}}</h1>
+					<div class="animated bounceInUp" ng-repeat="movieResult in movieResults">
+						<div class="movie-wrap">
+							<div class="movie-left">
+								<span>Rank{{movieResult.rank}}:《{{movieResult.MovieName}}》</span>
+							</div>
+							<div class="movie-right">
+								<p>上映时间：{{movieResult.releaseTime}}</p>
+								<p>单月票房：{{movieResult.boxoffice}}</p>
+								<p>票房比例：{{movieResult.box_pro}}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer text-center">
+		<span>Write By-</span>
+		<a href="#">NotMeIsMe</a>
+	</div>
+</body>
+</html>
