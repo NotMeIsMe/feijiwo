@@ -19,7 +19,6 @@ function mysqlStart(query, cb) {
 			
 		});
 	}	
-
 	queryMysql(query, cb);
 	conn.end();
 }

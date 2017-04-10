@@ -42,7 +42,6 @@ $(function(){
     	if(time.length !== 10) {
     		time = "0"+time;
     	}
-    	console.log(time);
     	return time.slice(0,2)+"/"+time.slice(2,4)+"  "+time.slice(4,6)+":"+time.slice(6,8)+":"+time.slice(8);
     }
 	$(".following").click(function(){
@@ -70,12 +69,27 @@ $(function(){
 		}).success(function(data){
 			$scope.user = data;
 			$scope.search("me");
-		});
-		$http({
-			method: 'GET',
-			url: '/getFollow'
-		}).success(function(data){
-			
+			$http({
+				method: 'GET',
+				url: '/getFollow'
+			}).success(function(result){
+				angular.forEach(result, function(re){
+					if(re.user == $scope.user) {
+						$scope.followings.push({follow: re.friend});
+					} else if(re.friend == $scope.user) {
+						$scope.followers.push({follow:re.user});
+					}
+				});
+				for(var i=0; i < $scope.followings.length; i++) {
+					var temp = $scope.followings[i];
+					for(var j=0; j < $scope.followers.length; j++) {
+						if(temp.follow === $scope.followers[j].follow) {
+							$scope.mutuals.push(temp);
+							break;
+						}
+					}
+				}
+			});
 		});
 		$scope.checkFriend = function() {
 			$http({
@@ -118,17 +132,6 @@ $(function(){
 					}
 				});	
 		}
-		$scope.getFriends = function(){
-			$scope.followings = [];
-			$scope.followers = [];
-			$scope.mutuals = [];
-			$http({
-				method: 'GET',
-				url: '/getFriends',
-			}).success(function(data){
-
-			});
-		}
 		$scope.search = function(me){
 			var name = $(".search-text").val();
 			if(me == "me") {
@@ -137,7 +140,10 @@ $(function(){
 				name = me;
 			}
 			if(name == "" && $scope.key) {
-				alert("关键词不能为空！");
+				$('.warn').text("关键词不能为空！");
+				window.setTimeout(function(){
+					$('.warn').text("");
+				},1500);
 				return;
 			}
 			if(!$scope.key) {
@@ -184,15 +190,41 @@ $(function(){
 						}
 						if(re.auth == $scope.user || re.recip == $scope.user) {
 							erase = true;
+						} else {
+							erase = false;
 						}
 					}
 					if(typeof auth == "string") {
-						$scope.messages.push({au: auth,rec: recip,mess:message,tim:time,p: pm,era: erase});
+						$scope.messages.push({au: auth, rec: recip, mess:message, tim:time, p: pm, era: erase, authKey: re.auth, recipKey: re.recip, id: re.id});
 					}
 					$scope.checkFriend();
 				});
-				console.log($scope.messages);
 			});
+		}
+		$scope.erase = function(authKey,recipKey,id) {
+			var isDel = confirm("确定要删除这条信息？"); 
+			if(isDel === true) {
+				var obj = {};
+				obj.auth = authKey;
+				obj.recip = recipKey;
+				obj.id = id;
+				$http({
+					method: 'POST',
+					url: '/deleteMessage',
+					data: obj
+				}).success(function(res){
+						if(res == "OK") {
+						var arrTemp = [];
+						angular.forEach($scope.messages, function(re,index,arr) {
+							if(re["authKey"] == authKey && re["recipKey"] == recipKey && re["id"] == id) {
+								arr.splice(index,1);
+								arrTemp = arr;
+							}
+						});
+						$scope.messages = arrTemp;	
+						}
+				});
+			}
 		}
 		$scope.sendText = function(){
 			var text = $(".text").val();

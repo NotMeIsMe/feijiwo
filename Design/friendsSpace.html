@@ -48,7 +48,7 @@
 					<a href="#" class="following">我的关注</a>
 					<ul class="nav nav-pills nav-stacked text-center following-list list-none">
 						<li ng-repeat="following in followings">
-							<a href="#"></a>
+							<a href="#" class="smallText" ng-click="search(following.follow)">{{following.follow}}</a>
 						</li>
 					</ul>
 				</li>
@@ -56,7 +56,7 @@
 					<a href="#" class="follower">我的粉丝</a>
 					<ul class="nav nav-pills nav-stacked text-center follower-list list-none">
 						<li ng-repeat="follower in followers">
-							<a href="#"></a>
+							<a href="#" class="smallText" ng-click="search(follower.follow)">{{follower.follow}}</a>
 						</li>
 					</ul>
 				</li>
@@ -64,7 +64,7 @@
 					<a href="#" class="mutual">互为好友</a>
 					<ul class="nav nav-pills nav-stacked text-center mutual-list list-none">
 						<li ng-repeat="mutual in mutuals">
-							<a href="#"></a>
+							<a href="#" class="smallText" ng-click="search(mutual.follow)">{{mutual.follow}}</a>
 						</li>
 					</ul>
 				</li>
@@ -73,6 +73,7 @@
 		<div class="search-bar">
 			<a href="#" class="btn btn-default search-btn" ng-click="search()">搜索</a>
 			<input type="text" placeholder="搜索用户" class="form-control search-text"></div>
+			<span class="warn"></span>
 		<div class="clear"></div>
 		<div class="pannel">
 			<div class="header text-center">
@@ -102,6 +103,7 @@
 							<span class="recip">{{message.rec}}{{message.p}}</span>
 						</p>
 						<p class="messagetxt">{{message.mess}}</p>
+						<button class="erase btn btn-default" ng-show="message.era" ng-click="erase(message.authKey,message.recipKey,message.id)">删除</button>
 					</div>
 				</div>
 			</div>

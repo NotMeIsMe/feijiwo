@@ -22,7 +22,6 @@ app.use(express.static('Design'));
 
 app.get("/userCheck",filter.authorize,function(req,res){
 	var userName = req.session.user;
-	console.log(userName + " has login");
 	res.send(req.session.user);
 });
 
@@ -137,7 +136,6 @@ app.post("/writeMessage",function(req,res){
 	var recip = req.session.recip;
 	var newMes = '1';
 	var tableName = 'messages';
-	console.log(time);
 	var values = "NULL"+ ',' + "'" + auth + "'" + ',' + "'" + recip + "'" + ',' + "'" + newMes + "'" + ',' + "'" + pm + "'" + ',' + "'" + time + "'" + ',' + "'" + text + "'";
 	insertDatar.insertData(tableName,values);
 	res.send("seccess");
@@ -150,7 +148,11 @@ app.get("/getRecip",function(req,res){
 	}
 });
 app.get("/getFollow",function(req,res){
-	
+	var tableName = 'friends';
+	var userName = "'" + req.session.user + "'";
+	queryDatar.queryFollow(tableName,userName,function(resn){
+		res.send(resn);
+	});
 });
 app.get("/checkFriend",function(req,res){
 	var tableName = 'friends';
@@ -171,9 +173,6 @@ app.get("/checkFriend",function(req,res){
 app.get("/getUser",function(req,res){
 	res.send(req.session.user);
 });
-app.get("/getFriends",function(req,res){
-	
-});
 app.get("/makeFriends",function(req,res){
 	var tableName = 'friends';
 	var userName = "'" + req.session.user + "'";
@@ -189,6 +188,15 @@ app.get("/makeFriends",function(req,res){
 		}
 	});
 
+});
+
+app.post("/deleteMessage",function(req,res){
+	var tableName = 'messages';
+	var authKey = "'" + req.body.auth + "'";
+	var recipKey = "'" + req.body.recip + "'";
+	var idKey = "'" + req.body.id + "'";
+	deleteDatar.deleteMessage(tableName,authKey,recipKey,idKey);
+	res.send("OK");
 });
 
 var server = app.listen(8080,function() {
