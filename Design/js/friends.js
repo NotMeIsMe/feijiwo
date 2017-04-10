@@ -61,12 +61,21 @@ $(function(){
 		$scope.name = "我";
 		$scope.recip = "";
 		$scope.user = "";
+		$scope.followings = [];
+		$scope.followers = [];
+		$scope.mutuals = [];
 		$http({
 			method: 'GET',
 			url: '/getUser'
 		}).success(function(data){
 			$scope.user = data;
 			$scope.search("me");
+		});
+		$http({
+			method: 'GET',
+			url: '/getFollow'
+		}).success(function(data){
+			
 		});
 		$scope.checkFriend = function() {
 			$http({
@@ -77,6 +86,8 @@ $(function(){
 					$(".follow").text("已关注");
 				} else if(data == "insert") {
 					$(".follow").text("关注");
+				} else if(data == "same") {
+					$(".follow").text("");
 				}
 			});			
 		};

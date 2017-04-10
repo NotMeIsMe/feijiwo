@@ -149,17 +149,24 @@ app.get("/getRecip",function(req,res){
 		res.send(req.session.recip);
 	}
 });
+app.get("/getFollow",function(req,res){
+	
+});
 app.get("/checkFriend",function(req,res){
 	var tableName = 'friends';
 	var userName = "'" + req.session.user + "'";
 	var friendName = "'" + req.session.recip + "'";
-	queryDatar.queryFriends(tableName,userName,friendName,function(resn){
-		if(resn.length > 0) {
-			res.send("delete");
-		} else {
-			res.send("insert");
-		}
-	});
+	if(req.session.user === req.session.recip) {
+		res.send("same");
+	} else {
+		queryDatar.queryFriends(tableName,userName,friendName,function(resn){
+			if(resn.length > 0) {
+				res.send("delete");
+			} else {
+				res.send("insert");
+			}
+		});
+	}
 });
 app.get("/getUser",function(req,res){
 	res.send(req.session.user);
