@@ -1,0 +1,102 @@
+* {
+	padding: 0;
+	margin: 0;
+	font-family: "Microsoft Yahei";
+	box-sizing: border-box;
+}
+a:hover {
+	text-decoration: none;
+}
+.clear {
+	clear:both;
+}
+ul {
+	list-style: none;
+}
+.icon-bar {
+	border: 1px solid black;
+}
+.navbar {
+	background-color: rgb(242,102,65);
+	font-size: 17px;
+	padding: 10px 0;
+	border-bottom: 1px solid rgb(207, 82, 49);
+}
+.navbar-nav {
+	margin-top: 15px;
+}
+.nav>li>a {
+	border-radius: 5px;
+	color: #fff;
+}
+.nav>li>a:hover {
+	background-color: rgb(187, 74, 44);
+}
+.gameBox {
+  width: 610px;
+  height: 300px;
+  border: 5px solid black;
+  border-radius: 6%;
+  margin: 100px;
+  background-color: #73A857;
+  overflow: hidden;
+}
+.leftBox {
+  width: 300px;
+  height: 300px;
+  display: inline-block;
+  border: 1px solid black;
+  background-color: #fff;
+}
+.rightBox {
+  width: 200px;
+  height: 300px;
+  display: inline-block;
+  border: 1px solid black;
+  background-color: #fff;
+}
+.block1,.block2,.block3,.block4 {
+  width: 125px;
+  height: 125px;
+  display: inline-block;
+  float: left;
+  margin: 10px;
+  border: 1px solid black;
+  border-radius: 15px;
+}
+.resetBtn,.startBtn {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100px;
+  height: 30px;
+}
+h2 {
+  width: 190px;
+  text-align: center;
+  margin-top: 0px;
+}
+.block1 {
+  background-color: #e74c3c;
+}
+.block2 {
+  background-color: #f39c12;
+}
+.block3 {
+  background-color: #27ae60;
+}
+.block4 {
+  background-color: #342224;
+}
+ .block:hover{
+  opacity: 0.9;
+}
+.unclickable {
+  pointer-events: none;
+}
+@media screen and (max-width: 500px) {
+  .gameBox {
+    transform: scale(0.6);
+    left: 20%;
+    margin-left: -100px;
+  }
+}

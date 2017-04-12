@@ -8,14 +8,14 @@ $(function(){
 		}
 	});
 	$(".logout").click(function(){
-		$.get("/logout",function(data,status){
-			var cf = confirm("确定要注销？");
-			if(cf == true) {
+		var cf = confirm("确定要注销？");
+		if(cf === true) {
+			$.get("/logout",function(data,status){
 				if(data == "true") {
-					window.location.href = "/index.html";
+				window.location.href = "/index.html";
 				}
-			}
-		});
+			});
+		}
 	});
 	function formatterDateTime() {
     	var date=new Date()

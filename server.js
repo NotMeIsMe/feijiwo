@@ -199,6 +199,16 @@ app.post("/deleteMessage",function(req,res){
 	res.send("OK");
 });
 
+app.get("/checkScore",function(req,res){
+	var tableName = 'games';
+	var userName = "'" + req.session.user + "'";
+	queryDatar.queryScore(tableName,userName,function(data){
+		if(data.length < 1) {
+			res.send("none");
+		}
+	});
+});
+
 var server = app.listen(8080,function() {
 	var host = server.address().address;
 	var port = server.address().port;
